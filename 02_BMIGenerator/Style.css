@@ -1,0 +1,21 @@
+body{
+    background-image: url(bkg\ photo.png);
+    background-repeat: no-repeat;
+    background-size: 100% , 100%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+.height , .weight , .calculate{
+    background-color: rgb(251, 246, 226);
+    border-radius: 5px;
+    /* padding: 20px; */
+}
+.one , .two{
+    padding: 15px;
+}
+.calculate{
+    margin: 20px;
+}
+
+
+

@@ -3,7 +3,7 @@
 * With the help of  @hiteshchaudhary a youtube content creator. [Link to his channel ](https://www.youtube.com/@chaiaurcode) , [Link to his github repository](https://github.com/hiteshchoudhary/js-hindi-youtube)
 
 
-### project 01/ colou changer💥:
+### project 01/ color changer💥:
 * changed color of window every time you clicked either the color buckets
 * And, revert back to it's normal greyish color once you click again anywhere on the window, except those colors
 
