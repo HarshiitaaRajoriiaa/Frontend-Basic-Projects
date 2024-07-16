@@ -1,13 +1,19 @@
 html {
-    font-family: sans-serif;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
   }
-  
+  .rules{
+    color: rgb(109, 32, 32);
+    margin-top: 40px;
+  }
   body {
     width: 300px;
     max-width: 750px;
     min-width: 480px;
     margin: 0 auto;
     background-color: #212121;
+    background-image: url(bkg.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% , 100%;
   }
   
   .lastResult {
@@ -17,7 +23,8 @@ html {
   
   .guesses {
     color: white;
-    padding: 7px;
+    padding-right: 20px;
+    padding-left: 20px;
   }
   
   button {
@@ -33,12 +40,12 @@ html {
   }
   
   #subt {
-    background-color: #161616;
+    background-color: #212121;
     color: #ffffff;
-    width: 200px;
+    width: 300px;
     height: 50px;
     border-radius: 10px;
-    font-size: 20px;
+    font-size: 13px;
     border-style: none;
     margin-top: 50px;
     /* margin-left: 75px; */
@@ -70,17 +77,19 @@ html {
   }
   
   #wrapper {
-    box-sizing: border-box;
+    background: rgba(150, 148, 148, 0.8);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(0.5px);
     text-align: center;
-    width: 450px;
-    height: 550px;
-    background-color: #474747;
-    color: #fff;
-    font-size: 25px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+    width: 400px;
   }
   
   h1 {
-    background-color: #161616;
+    /* background-color: #161616; */
   
     color: #fff;
     text-align: center;
