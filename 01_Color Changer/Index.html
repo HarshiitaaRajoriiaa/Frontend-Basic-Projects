@@ -57,12 +57,12 @@
     </h2>
 
     <div class='images' id='image'>
-      <span class="button" id="one"> <img class='i' id='i1' src="one.png" alt="" data-color="#986D9A"></span>
-      <span class="button" id="two"><img class="i" id='i2' src="two.png" alt="" data-color="#E1AFD1"></span>
-      <span class="button" id="three"><img class='i' id='i3' src="three.png" alt="" data-color="#6295A2"></span>
-      <span class="button" id="four"><img class='i' id='i4' src="four.png" alt="" data-color="#F1E5D1"></span>
-      <span class="button" id="five"><img class='i' id='i5' src="five.png" alt="" data-color="#987070"></span>
-      <span class="button" id="six"><img class='i' id='i6' src="six.png" alt="" data-color="#FBA834"></span>
+      <span class="button" id="one"> <img class='i' id='i1' src="one.png" alt="purple bucket" data-color="#986D9A"></span>
+      <span class="button" id="two"><img class="i" id='i2' src="two.png" alt="pink bucket" data-color="#E1AFD1"></span>
+      <span class="button" id="three"><img class='i' id='i3' src="three.png" alt="green bucket" data-color="#6295A2"></span>
+      <span class="button" id="four"><img class='i' id='i4' src="four.png" alt="cream bucket" data-color="#F1E5D1"></span>
+      <span class="button" id="five"><img class='i' id='i5' src="five.png" alt="chocolate bucket" data-color="#987070"></span>
+      <span class="button" id="six"><img class='i' id='i6' src="six.png" alt="yellow bucket" data-color="#FBA834"></span>
 
     </div>
 
@@ -74,7 +74,7 @@
 
     buttons.forEach((button) => {
       button.addEventListener('click', (b) => {
-        const clickedImage = b.target; // return the element here img
+        const clickedImage = b.target; // return the element here IMG
         console.log(clickedImage.parentElement)
         const color = clickedImage.getAttribute('data-color'); // get the color from data-color attribute
 
