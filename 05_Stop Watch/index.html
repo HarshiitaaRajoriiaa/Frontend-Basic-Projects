@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Watch</title>
+    <link rel="shortcut icon" href="icon.png" type="image/x-icon">
+    <style>
+        body {
+            background-color: #6F4E37;
+            display: flex;
+            text-align: center;
+            flex-direction: column;
+            align-items: center;
+
+        }
+        .container {
+            display: flex;
+            justify-content: flex-end; /* Align items to the right */
+            gap: 10px; /* Space between buttons */
+            padding: 20px;
+            height: 200px;
+            width: 400px;
+            background-color: #A67B5B;
+            align-items: center;
+            border-radius: 20px;
+            margin-top: 130px;
+            box-shadow: 5px 6px #212121;
+        }
+        .clock-container {
+            background-color: #ECB176;
+            height: 140px;
+            width: 370px;
+            /* margin: 20px; */
+            margin-top: 2px;
+            border-radius: 20px;
+            box-shadow: 5px 5px #212121;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-right: 10px;
+        }
+        .heading {
+            margin-top: 4px ;
+            margin-bottom: 2px;
+        }
+        .button{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+        #time{
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!--container 1 == main container -->
+    <div class="container">
+        <h1 class = 'heading'>STOP WATCH:</h1>
+
+        <!-- container 2 == with timer and buttons -->
+        <div class="clock-container">
+
+            <!-- container 3 == timer -->
+            <div class = "timeContainer" 
+            style = 
+            "background-color: #FED8B1;
+            height: 120px;
+            width: 150px;
+            border-radius: 30px;
+            margin-right: 20px;">
+            <h3 id = "time" >00:00:00:0000</h3>
+            </div>
+            
+            <!-- container 4 = buttons -->
+            <div class = "button" style = " height: 120px;width: 50px;">
+                <button id = "start" class = "b1" style = "height: 30px; width: 62px; border-radius: 7px; background-color:#FED8B1; box-shadow: 2px 3px #212121;">Start</button>
+                <button  id = "pause" class = "b2" style = "height: 30px; width: 62px;  border-radius: 7px; background-color:#FED8B1; box-shadow: 2px 3px #212121;">Pause</button>
+                <button id="stop" class = "b1" style = "height: 30px; width: 62px;  border-radius: 7px; background-color:#FED8B1; box-shadow: 2px 3px #212121;">Stop</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- container 5 = data -->
+    <div class = "data" ">
+        <p>Saved times:</p>
+        <ul id="saved-times">
+            <!-- Saved times will appear here -->
+        </ul>
+    </div>
+</body>
+<script>
+
+let startTime, currentTime = 0, timerInterval;
+//start time == at what time you started time so we will calculated time like  current time - start time
+
+
+//initial phase
+function startTimer() {
+    startTime = Date.now() - currentTime;   //number of milliseconds from January 1, 1970, to the current date and time.
+    timerInterval = setInterval(updateTime, 1); // Update time every 10 milliseconds
+    document.getElementById('start').disabled = true;
+    document.getElementById('pause').disabled = false;
+    document.getElementById('stop').disabled = false;
+    document.getElementById('pause').textContent = 'Pause';
+}
+
+function pauseTimer() {
+    clearInterval(timerInterval);
+    elapsedTime = Date.now() - startTime;
+    document.getElementById('pause').textContent = 'Resume';
+    document.getElementById('pause').onclick = resumeTimer;
+}
+
+function resumeTimer() {
+    startTime = Date.now() - elapsedTime;
+    timerInterval = setInterval(updateTime, 1); // Resume updating time every 10 milliseconds
+    document.getElementById('pause').textContent = 'PAUSE';
+    document.getElementById('pause').onclick = pauseTimer;
+}
+
+function stopTimer() {
+    clearInterval(timerInterval);
+    const timeElement = document.getElementById("time");
+    saveTime(timeElement.textContent);
+    elapsedTime = 0;
+    document.getElementById('pause').innerHTML = 'Pause'
+    timeElement.textContent = "00:00:00:0000";
+    document.getElementById('start').disabled = false;
+    document.getElementById('pause').disabled = true;
+    document.getElementById('stop').disabled = true;
+}
+
+function updateTime() {
+    elapsedTime = Date.now() - startTime;
+    const time = new Date(elapsedTime);
+    const hours = String(Math.floor(elapsedTime / (1000 * 60 * 60) % 24)).padStart(2, '0');
+    const minutes = String(Math.floor(elapsedTime / (1000 * 60) % 60)).padStart(2, '0');
+    const seconds = String(Math.floor(elapsedTime / 1000 % 60)).padStart(2, '0');
+    const milliseconds = String(elapsedTime % 1000).padStart(4, '0');
+    document.getElementById("time").textContent = `${hours}:${minutes}:${seconds}:${milliseconds}`;
+}
+
+function saveTime(time) {
+    const li = document.createElement("li");
+    li.textContent = time;
+    document.getElementById("saved-times").appendChild(li);
+}
+
+document.getElementById("start").addEventListener('click', startTimer);
+document.getElementById("pause").addEventListener('click', pauseTimer);
+document.getElementById("stop").addEventListener('click', stopTimer);
+
+
+
+// Initially disable pause and stop buttons , will unable buttons as need inside the function
+document.getElementById('pause').disabled = true;
+document.getElementById('stop').disabled = true;
+
+
+
+</script>
+</html>
