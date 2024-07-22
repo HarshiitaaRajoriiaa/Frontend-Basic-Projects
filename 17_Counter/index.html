@@ -4,23 +4,119 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COUNTER GAME</title>
+    <link rel="shortcut icon" href="icon.png" type="image/x-icon">
     <style>
         body{
-            background-color: black;
-            display: flex;
+            background-color:#C7B7A3;
+            display:flex;
+            flex-direction: column;
+            align-items: center;
             justify-content: center;
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
         p , h1 , h2 , h3 {
-            color: white;
+            color:black;
+        }
+        h1{
+            text-shadow: 2px 2px grey;
+        }
+        #container{
+            background-color: #EADBC8;
+            height: 300px;
+            width: 500px;
+            /* border: 2px solid black; */
+            border-radius: 20px;
+            margin-top: 20px;
+            box-shadow: 2px 2px 2px grey;
+        }
+        #numbers{
+            /* background-color: black; */
+            height: 150px;
+            width: 460px;
+            margin-left: 20px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #reset{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #add , #minus , #reset_button{
+            height: 40px;
+            width: 60px;
+            background-color: #C7B7A3;
+            border-radius: 10px;
+            margin: 20px;
+            /* font-size: 30px; */
+        }
+        #reset_button{
+            margin-top: 60px;
+        }
+        #add , #minus{
+            font-size: 30px;
+            text-align: center;
+            align-items: center;
+        }
+        #add{
+            margin-right: 70px;
+        }
+        #minus{
+            margin-left:70px ;
+        }
+
+        #number{
+            height: 100px;
+            width: 100px;
+            font-size: 70px;
+            align-items: center;
+            text-align: center;
         }
 
     </style>
 </head>
 <body>
-    <p>Lorem ipsum dolor sit amet consectetur.</p>
-    <div>
-        
+    <h1>COUNTER GAME:</h1>
+    <div id  = "container">
+        <div id = "numbers"   ">
+            <button id = "add">+</button>
+            <form><input  id = "number" type = "text"></form>
+            <button id = "minus">-</button>
+        </div>
+        <div id = "reset"> 
+            <button id = "reset_button"> Reset</button>
+        </div>
     </div>
 </body>
+<script>
+    let input = document.getElementById("number");
+
+        function handlingNAN(value) {
+            let number = parseInt(value);
+            if (isNaN(number)) {
+                number = 0;
+            }
+            return number;
+        }
+
+        document.getElementById("add").addEventListener('click', () => {
+            let no = handlingNAN(input.value);
+            console.log("add");
+            no++;
+            input.value = no;
+        });
+
+        document.getElementById("minus").addEventListener('click', () => {
+            let no = handlingNAN(input.value);
+            console.log("minus");
+            no--;
+            input.value = no;
+        });
+
+        document.getElementById("reset_button").addEventListener('click', () => {
+            input.value = 0;
+        });
+    </script>
 </html>
