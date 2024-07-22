@@ -1,7 +1,7 @@
 # PROJECTS
 * Making projects for enhancing my web development skills.
 * With the help of  @hiteshchaudhary a youtube content creator. [Link to his channel ](https://www.youtube.com/@chaiaurcode) , [Link to his github repository](https://github.com/hiteshchoudhary/js-hindi-youtube)
-
+* [GFG project ideas](https://www.geeksforgeeks.org/top-javascript-projects/?ref=shm)
 
 ### project 01/ color changer💥:
 * changed color of window every time you clicked either the color buckets
