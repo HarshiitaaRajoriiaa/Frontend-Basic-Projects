@@ -1,73 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Color Changer🕹️🎨</title>
-    <link rel="shortcut icon" href="image.png" type="image/x-icon">
-    <style>
-      body{
-    background-color: darkgrey;
-    color:black;
-    font-family:Goldman Sans, sans-serif;
-    text-align: center;
-    align-items: center;
-}
-.description{
-    font-size: smaller;
-}
- .button {
-    width: 10px;
-    height: 10px;
-    display: inline-block;
-    padding: 40px;
-    margin: 40px; 
-  }
-  #one:hover {
-    filter: drop-shadow(0 0 2em #986D9A);
-  }
-  #two:hover {
-    filter: drop-shadow(0 0 2em #E1AFD1);
-  }
-  #three:hover {
-    filter: drop-shadow(0 0 2em #6295A2);
-  }
-  #four:hover {
-    filter: drop-shadow(0 0 2em #F1E5D1);
-  }
-  #five:hover {
-    filter: drop-shadow(0 0 2em #987070);
-  }
-  #six:hover {
-    filter: drop-shadow(0 0 2em #FBA834);
-  }
-  .i{
-    height:100px;
-  }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Color Changer🕹️🎨</title>
+  <link rel="shortcut icon" href="image.png" type="image/x-icon">
+  <style>
+    body {
+      background-color: darkgrey;
+      color: black;
+      font-family: Goldman Sans, sans-serif;
+      text-align: center;
+      align-items: center;
+    }
+    .description {
+      font-size: smaller;
+    }
+    .button {
+      width: 10px;
+      height: 10px;
+      display: inline-block;
+      padding: 40px;
+      margin: 40px;
+    }
+    #one:hover {
+      filter: drop-shadow(0 0 2em #986D9A);
+    }
+    #two:hover {
+      filter: drop-shadow(0 0 2em #E1AFD1);
+    }
+    #three:hover {
+      filter: drop-shadow(0 0 2em #6295A2);
+    }
+    #four:hover {
+      filter: drop-shadow(0 0 2em #F1E5D1);
+    }
+    #five:hover {
+      filter: drop-shadow(0 0 2em #987070);
+    }
+    #six:hover {
+      filter: drop-shadow(0 0 2em #FBA834);
+    }
+    .i {
+      height: 100px;
+    }
+  </style>
 </head>
+
 <body>
-    
-    <div class="canvas">
-      
-      <h1>Color Changer🕹️🎨</h1>
-      <h2 class = "description">
-        <i>Try clicking on one of the Color bucket  to see the magic💥!</i>
-      </h2>
 
-      <div class = 'images' id = 'image'>
-      <span class="button" id="one"> <img  class = 'i' id = 'i1' src="one.png" alt="" data-color = "#986D9A" ></span>
-      <span class="button" id="two"><img class="i"  id = 'i2' src="two.png" alt="" data-color = "#E1AFD1"></span>
-      <span class="button" id="three"><img class ='i' id = 'i3' src="three.png" alt="" data-color = "#6295A2"></span>
-      <span class="button" id="four"><img class ='i'  id = 'i4'  src="four.png" alt="" data-color = "#F1E5D1"></span>
-      <span class="button" id="five"><img  class ='i' id = 'i5' src="five.png" alt="" data-color = "#987070"></span>
-      <span class="button" id="six"><img class ='i' id = 'i6'  src="six.png" alt="" data-color = "#FBA834"></span>
+  <div class="canvas">
 
-      </div>
+    <h1>Color Changer🕹️🎨</h1>
+    <h2 class="description">
+      <i>Try clicking on one of the Color bucket to see the magic💥!</i>
+    </h2>
+
+    <div class='images' id='image'>
+      <span class="button" id="one"> <img class='i' id='i1' src="one.png" alt="" data-color="#986D9A"></span>
+      <span class="button" id="two"><img class="i" id='i2' src="two.png" alt="" data-color="#E1AFD1"></span>
+      <span class="button" id="three"><img class='i' id='i3' src="three.png" alt="" data-color="#6295A2"></span>
+      <span class="button" id="four"><img class='i' id='i4' src="four.png" alt="" data-color="#F1E5D1"></span>
+      <span class="button" id="five"><img class='i' id='i5' src="five.png" alt="" data-color="#987070"></span>
+      <span class="button" id="six"><img class='i' id='i6' src="six.png" alt="" data-color="#FBA834"></span>
 
     </div>
 
-    <script src="Script.js"></script>
+  </div>
 
-  </body>
+  <script>
+    const buttons = document.querySelectorAll('.button img'); // all images inside buttons selected
+    const body = document.querySelector('body'); // body selected
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', (b) => {
+        const clickedImage = b.target; // return the element here img
+        console.log(clickedImage.parentElement)
+        const color = clickedImage.getAttribute('data-color'); // get the color from data-color attribute
+
+        // Set the body's background color
+        body.style.backgroundColor = color;
+      });
+    });
+
+    window.addEventListener('click', (event) => {  //Adds a click event listener to the entire window.
+      if (!event.target.closest('.button')) { // Checks if the click event did not occur inside any element within the class button.
+        body.style.backgroundColor = 'darkgrey';
+      }
+    });
+
+  </script>
+</body>
 </html>
