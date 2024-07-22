@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard checker</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <style>
+         body {
+            background-image: url(bkg.jpg);
+            display: flex;
+            /* justify-content: center; */
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+        }
+        p {
+            color: white;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .intro {
+            margin-left: 100px;
+        }
+        .guess{
+            margin-left: 400px;
+        }
+        .extra{
+
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p class="intro">You press any key and i'll guess</p>
+    </div>
+    <div id ="guess_box"> 
+        <p class="guess">"<span id = "name">__</span>" huh??</p>
+       
+    </div>
+</body>
+<script>
+    const display = document.getElementById("name");
+    window.addEventListener('keydown', (e) => {
+        display.innerText = e.code;
+    });
+
+</script>
+</html>
