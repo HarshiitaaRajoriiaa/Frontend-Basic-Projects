@@ -1,31 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="../styles.css" />
-    <title>BMI Calculator</title>
-    <link rel="shortcut icon" href="icon.png" type="image/x-icon">
-  </head>
-  <body>
-    <div class = 'div1'>
-      <h1>BMI Calculator:</h1>
-      <form>
-        <p  class = 'one'><label>Height in CM: </label><input   type="text" id="height" /></p>
-        <p  class = 'two'><label>Weight in KG: </label><input   type="text" id="weight" /></p>
-        <button class =  'calculate' >CHECK BMI⌛</button>
-        <div id="results"></div>
-      </form>
-    </div>
-    <div class = 'chart'>
-        <p>BMI Categories:</p>
-        <p>Underweight = <18.5</p>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>BMI Calculator</title>
+  <link rel="shortcut icon" href="icon.png" type="image/x-icon">
+  <style>
+    body {
+      background-image: url(bkg\ photo.png);
+      background-repeat: no-repeat;
+      background-size: 100%, 100%;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+    }
+
+    #height,
+    #weight,
+    #calculate {
+      background-color: rgb(251, 246, 226);
+      border-radius: 5px;
+      /* padding: 20px; */
+    }
+
+    .one,
+    .two {
+      padding: 7px;
+    }
+
+    .calculate {
+      margin: 20px;
+    }
+
+    .div1 {
+      background: rgba(150, 148, 148, 0.8);
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(0.5px);
+      text-align: center;
+      margin: 100px;
+    }
+
+    .chart {
+      background: rgba(150, 148, 148, 0.8);
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(0.5px);
+      text-align: center;
+      margin: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class='div1'>
+    <h1>BMI Calculator:</h1>
+    <form>
+      <p class='one'><label>Height in CM: </label><input type="text" id="height" /></p>
+      <p class='two'><label>Weight in KG: </label><input type="text" id="weight" /></p>
+      <button class='calculate'>CHECK BMI⌛</button>
+      <div id="results"></div>
+    </form>
+  </div>
+  <div class='chart'>
+    <p>BMI Categories:</p>
+    <p>Underweight = <18.5< /p>
         <p>Normal weight = 18.5–24.9</p>
         <p>Overweight = 25–29.9</p>
         <p>Obesity = BMI of 30 or greater</p>
-    </div>
-  </body>
-  <script src="Script.js"></script>
+  </div>
+</body>
+<script>
+  const form = document.querySelector('form');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const height = parseInt(document.querySelector('#height').value);
+    const weight = parseInt(document.querySelector('#weight').value);
+    const results = document.querySelector('#results');
+    if (height === '' || height < 0 || isNaN(height)) {
+      results.innerHTML = `Please give a valid height`;
+    }
+    else if (weight === '' || weight < 0 || isNaN(weight)) {
+      results.innerHTML = `Please give a valid weight`;
+    }
+    else {
+      const bmi = (weight / ((height * height) / 10000)).toFixed(2);
+      //show the result
+      results.innerHTML = `<span>${bmi}</span>`;
+      height = " "
+      weight = " "
+    }
+  })
+
+</script>
+
 </html>
